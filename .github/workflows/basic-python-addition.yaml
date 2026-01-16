@@ -1,0 +1,17 @@
+name: python-addition-workflow
+on:
+  workflow_dispatch:
+jobs:
+  pythonjob:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v6.0.2
+    - name: setup python
+      uses: actions/setup-python@v6.1.0
+    - name: install dependencies
+      run: pip install pytest
+    - name: test the function
+      run: pytest app.py
+    - name: run the function
+      run: python app.py
