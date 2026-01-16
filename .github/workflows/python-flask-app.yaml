@@ -1,8 +1,8 @@
 name: Python Flask App
 on:
-#  push:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
   workflow_dispatch: 
 concurrency: 
   group: python-${{ github.ref }}
@@ -46,7 +46,7 @@ jobs:
     - name: set aks context
       uses: azure/aks-set-context@v4
       with:
-        resource-group: kml_rg_main-c4ed4574dea848c2
+        resource-group: DefaultResourceGroup-EUS
         cluster-name: myaks
     - name: deploy to aks
       uses: Azure/k8s-deploy@v5
