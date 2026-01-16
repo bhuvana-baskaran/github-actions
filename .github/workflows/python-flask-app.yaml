@@ -18,7 +18,32 @@ jobs:
         with:
           context: python-flask-app/.
           push: true
-          tags: ${{ secrets.ACR_REGISTRY }}/flask-app:latest
+          tags: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}
+  deploy_aks:
+    runs-on: ubuntu-latest
+    needs: build_app
+    steps:
+    - name: login to azure
+      uses: Azure/login@v2.3.0
+      with:
+        client-secret: $ {{ secrets.CLIENT_SECRET }}
+        client-id: $ {{ secrets.CLIENT_ID }}
+        tenant-id: $ {{ secrets.TENANT_ID }}
+    - name: set aks context
+      uses: azure/aks-set-context@v4
+      with:
+        resource-group: kml_rg_main-c4ed4574dea848c2
+        cluster-name: myaks
+    - name: deploy to aks
+      uses: Azure/k8s-deploy@v5
+      with:
+        images: mypythonapprepo.azurecr.io/mypythonapprepo:${{ github.run_number }}
+        manifests: deployment.yaml
+        imagepullsecrets: acr-secret # k8s secret
+          
+        
+        
+        
       
         
       
