@@ -8,10 +8,10 @@ this file works only with below configuration
 
 For AKS to access ACR, either create imagePullSecret with
 kubectl create secret docker-registry acr-secret \
-  --docker-server=<acr-name>.azurecr.io \
-  --docker-username=<username> \
-  --docker-password=<password> \
-  --docker-email=<email>
+  --docker-server=acr-name.azurecr.io \
+  --docker-username=username \
+  --docker-password=password \
+  --docker-email=email
 or assign AcrPull role on ACR for UMI of aks nodepools (by default control plane has system assinged and nodepools have user assigned identity)
 
 Here I have used service principle for azure login and deploy to AKS cluster
