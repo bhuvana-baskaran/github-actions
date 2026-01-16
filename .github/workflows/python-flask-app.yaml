@@ -29,6 +29,7 @@ jobs:
         client-secret: $ {{ secrets.CLIENT_SECRET }}
         client-id: $ {{ secrets.CLIENT_ID }}
         tenant-id: $ {{ secrets.TENANT_ID }}
+        subscription-id: a2b28c85-1948-4263-90ca-bade2bac4df4 
     - name: set aks context
       uses: azure/aks-set-context@v4
       with:
