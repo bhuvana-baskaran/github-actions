@@ -5,7 +5,7 @@ on:
       - main
   workflow_dispatch: 
 concurrency: 
-  group: python-$ {{ github.ref }}
+  group: python-${{ github.ref }}
 jobs:
   build_app:
     runs-on: ubuntu-latest
