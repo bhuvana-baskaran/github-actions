@@ -12,6 +12,6 @@ jobs:
     - name: install dependencies
       run: pip install pytest
     - name: test the function
-      run: pytest src/addition.py
+      run: pytest -s src/addition.py
     - name: run the function
-      run: python -m pytest src/addition.py
+      run: python src/addition.py
