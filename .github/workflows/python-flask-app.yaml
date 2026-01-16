@@ -2,15 +2,24 @@ name: Python Flask App
 on:
   workflow_dispatch:
 jobs:
-  build:
+  build_app:
     runs-on: ubuntu-latest
     container: python:3.11
     steps:
       - name: checkout
         uses: actions/checkout@v6.0.2
-      - name: Install dependencies
-        run: pip install -r python-flask-app/requirements.txt
-      - name: Run the app
-        run: python python-flask-app/app.py
+      - name: docker login to acr  
+        uses: docker/login-action@v3.6.0
+        with: 
+          registry: ${{ secrets.ACR_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: build and push to acr
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: python-flask-app/.
+          push: true
+          tags: ${{ secrets.ACR_REGISTRY }}/flask-app:latest
+      
         
       
