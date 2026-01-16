@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+  labels:
+    app: flask-app
+spec:
+  replicas: 2   # number of pod replicas
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-app
+        image: mypythonapprepo.azurecr.io/flask-app:${{ buildnumber }}
+        ports:
+        - containerPort: 5000
+      imagePullSecrets:
+      - name: acr-secret   # secret for pulling from ACR
