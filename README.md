@@ -12,6 +12,7 @@ kubectl create secret docker-registry acr-secret \
   --docker-username=username \
   --docker-password=password \
   --docker-email=email
+
 or assign AcrPull role on ACR for UMI of aks nodepools (by default control plane has system assinged and nodepools have user assigned identity)
 
 Here I have used service principle for azure login and deploy to AKS cluster
