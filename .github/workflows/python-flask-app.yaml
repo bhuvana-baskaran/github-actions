@@ -1,6 +1,8 @@
 name: Python Flask App
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 jobs:
   build_app:
     runs-on: ubuntu-latest
