@@ -51,7 +51,7 @@ jobs:
       uses: Azure/k8s-deploy@v5
       with:
         images: mypythonapprepo.azurecr.io/mypythonapprepo:${{ github.run_number }}
-        manifests: k8s/deployment.yaml
+        manifests: k8s/python-app/deployment.yaml
         imagepullsecrets: acr-secret # k8s secret
           
         
