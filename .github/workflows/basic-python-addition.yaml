@@ -14,4 +14,4 @@ jobs:
     - name: test the function
       run: pytest src/addition.py
     - name: run the function
-      run: python src/addition.py
+      run: python -m pytest src/addition.py
