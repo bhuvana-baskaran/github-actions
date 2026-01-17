@@ -18,6 +18,7 @@ jobs:
         with:
           name: image-tag
           path: artifact
+          run-id: ${{ github.event.workflow_run.id }}
       - name: check image tag
         run: cat artifact/image-tag.txt 
       # - name: login to azure
