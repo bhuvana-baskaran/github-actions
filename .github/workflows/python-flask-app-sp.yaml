@@ -10,13 +10,14 @@ concurrency:
 jobs:
   build_app:
     runs-on: ubuntu-latest
+    environment: python-aks-sp
     steps:
       - name: checkout
         uses: actions/checkout@v6.0.2
       - name: docker login to acr  
         uses: docker/login-action@v3.6.0
         with: 
-          registry: ${{ secrets.ACR_REGISTRY }}
+          registry: ${{ vars.ACR_REGISTRY }}
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - name: build and push to acr
@@ -27,6 +28,7 @@ jobs:
           tags: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}
   deploy_aks:
     runs-on: ubuntu-latest
+    environment: python-aks-sp
     needs: build_app
     steps:
     - name: checkout
