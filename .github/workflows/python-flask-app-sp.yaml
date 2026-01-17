@@ -28,7 +28,7 @@ jobs:
           tags: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}
   deploy_aks:
     runs-on: ubuntu-latest
-    #environment: python-aks-sp
+    environment: python-aks-sp
     needs: build_app
     steps:
     - name: checkout
