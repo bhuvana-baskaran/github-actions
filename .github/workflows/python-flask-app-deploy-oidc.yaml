@@ -9,6 +9,7 @@ jobs:
   deploy_job:
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       actions: read
       contents: read
       
