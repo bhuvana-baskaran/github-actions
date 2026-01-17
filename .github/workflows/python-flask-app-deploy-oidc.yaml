@@ -17,15 +17,8 @@ jobs:
         uses: actions/checkout@v6.0.2
         with: 
           sparse-checkout: k8s
-      - name: download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: image-tag
-          path: artifact
-          run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: check image tag
-        run: cat artifact/image-tag.txt 
+        run: echo "${{ github.event.workflow_run.id }}"
       # - name: login to azure
       #   uses: Azure/login@v2.3.0
       # - name: install kubelogin
