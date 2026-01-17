@@ -25,7 +25,7 @@ jobs:
       - name: write image name with tag to file
         run: echo "${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}" > image-tag.txt
       - name: upload image tag to artifact
-        uses: actions/upload-artifact@v6.0.0
+        uses: actions/upload-artifact@v4
         with:
           name: image-tag
           path: image-tag.txt
