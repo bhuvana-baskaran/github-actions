@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v6.0.2
         with: 
           sparse-checkout: k8s
+      - name: print run number
+        run: echo "${{ github.event.workflow_run.run_number }}"
       - name: login to azure
         uses: Azure/login@v2.3.0
         with:
