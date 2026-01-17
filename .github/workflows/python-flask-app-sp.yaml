@@ -41,14 +41,6 @@ jobs:
       uses: Azure/login@v2.3.0
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        #allow-no-subscriptions: true
-        #client-id: $ {{ secrets.CLIENT_ID }}
-        #tenant-id: $ {{ secrets.TENANT_ID }}
-        #subscription-id: a2b28c85-1948-4263-90ca-bade2bac4df4 
-    - name: install kubelogin
-      uses: Azure/use-kubelogin@v1
-      with:
-        kubelogin-version: 'v0.1.4'
     - name: set aks context
       uses: azure/aks-set-context@v4
       with:
