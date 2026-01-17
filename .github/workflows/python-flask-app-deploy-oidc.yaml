@@ -17,7 +17,7 @@ jobs:
         uses: actions/download-artifact@v7.0.0
         with:
           name: image-tag
-          path: image-tag.txt
+          path: artifact/image-tag.txt
       - name: check image tag
         run: cat image-tag.txt 
       # - name: login to azure
