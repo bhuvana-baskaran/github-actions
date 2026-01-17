@@ -18,7 +18,7 @@ jobs:
         with: 
           sparse-checkout: k8s
       - name: check image tag
-        run: echo "${{ github.event.workflow_run.id }}"
+        run: echo "${{ github.event.workflow_run.run_number }}"
       # - name: login to azure
       #   uses: Azure/login@v2.3.0
       # - name: install kubelogin
