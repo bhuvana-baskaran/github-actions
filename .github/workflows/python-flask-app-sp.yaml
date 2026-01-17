@@ -1,5 +1,5 @@
 name: Python Flask App - SP
-# on:
+on:
 #   push:
 #     branches:
 #       - main
