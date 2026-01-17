@@ -19,5 +19,5 @@ spec:
         image: myacr111.azurecr.io/flask-app
         ports:
         - containerPort: 5000
-      imagePullSecrets:
-      - name: acr-secret   # secret for pulling from ACR
+      #imagePullSecrets:
+      #- name: acr-secret   # secret for pulling from ACR
