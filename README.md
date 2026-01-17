@@ -7,6 +7,7 @@ this file works only with below configuration
 - kubelogin is not required as the cluster doesn't have AAD authentication enabled
 
 For AKS to access ACR, either create imagePullSecret with
+
 kubectl create secret docker-registry acr-secret \
   --docker-server=acr-name.azurecr.io \
   --docker-username=username \
