@@ -52,6 +52,8 @@ jobs:
       with:
         resource-group: myrg1
         cluster-name: myaks
+        admin: 'false'
+        use-kubelogin: 'true'
     - name: deploy to aks
       uses: Azure/k8s-deploy@v5
       with:
