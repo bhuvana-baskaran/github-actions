@@ -1,0 +1,33 @@
+name: Python Flask App Build
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch: 
+jobs:
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6.0.2
+      - name: docker login for acr
+        uses: docker/login-action@v3.6.0
+        with:
+          registry: ${{ secrets.ACR_REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: build docker image & push to acr
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: python-flask-app/.
+          push: true
+          tags: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}
+      - name: write image name with tag to file
+        run: echo "${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}" > image-tag.txt
+      - name: upload image tag to artifact
+        uses: actions/upload-artifact@v6.0.0
+        with:
+          name: image-tag
+          path: image-tag.txt
+          if-no-files-found: error
+          
