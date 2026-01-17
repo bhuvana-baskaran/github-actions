@@ -17,27 +17,29 @@ jobs:
         uses: actions/checkout@v6.0.2
         with: 
           sparse-checkout: k8s
-      - name: check image tag
-        run: echo "${{ github.event.workflow_run.run_number }}"
-      # - name: login to azure
-      #   uses: Azure/login@v2.3.0
-      # - name: install kubelogin
-      #   uses: Azure/use-kubelogin@v1
-      #   with:
-      #     kubelogin-version: 'v0.1.4'
-      # - name: set aks context
-      #   uses: azure/aks-set-context@v4
-      #   with:
-      #     resource-group: myrg1
-      #     cluster-name: myaks
-      #     admin: 'false'
-      #     use-kubelogin: 'true'
-      # - name: deploy to aks
-      #   uses: Azure/k8s-deploy@v4.9
-      #   with:
-      #     images: 
-      #     manifests: k8s/python-app/deployment.yaml
-      #     timeout: 30s
+      - name: login to azure
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: ${{ secrets.CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUB_ID }}
+      - name: install kubelogin
+        uses: Azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.1.4'
+      - name: set aks context
+        uses: azure/aks-set-context@v4
+        with:
+          resource-group: myrg1
+          cluster-name: myaks
+          admin: 'false'
+          use-kubelogin: 'true'
+      - name: deploy to aks
+        uses: Azure/k8s-deploy@v4.9
+        with:
+          images: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.event.workflow_run.run_number }}
+          manifests: k8s/python-app/deployment.yaml
+          timeout: 30s
             
         
             
