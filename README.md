@@ -17,3 +17,9 @@ kubectl create secret docker-registry acr-secret \
 or assign AcrPull role on ACR for UMI of aks nodepools (by default control plane has system assinged and nodepools have user assigned identity)
 
 Here I have used service principle for azure login and deploy to AKS cluster
+
+For AKS cluster with 'Microsoft Entra ID authentication with Azure RBAC' mode, assign below roles for SP to AKS
+- Azure Kubernetes Service Cluster User Role
+- Azure Kubernetes Service RBAC Writer / Admin
+- add kubelogin action to install kubelogin which is required for AAD authentication
+- disable admin login on AKS deploy stage
