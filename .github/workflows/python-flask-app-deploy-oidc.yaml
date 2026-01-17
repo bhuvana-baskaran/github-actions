@@ -8,6 +8,10 @@ on:
 jobs:
   deploy_job:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      
     steps:
       - name: checkout
         uses: actions/checkout@v6.0.2
@@ -19,6 +23,7 @@ jobs:
           name: image-tag
           path: artifact
           run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: check image tag
         run: cat artifact/image-tag.txt 
       # - name: login to azure
