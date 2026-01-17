@@ -28,7 +28,7 @@ jobs:
           tags: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}
   deploy_aks:
     runs-on: ubuntu-latest
-    environment: python-aks-sp
+    #environment: python-aks-sp
     needs: build_app
     steps:
     - name: checkout
@@ -52,9 +52,8 @@ jobs:
       with:
         images: ${{ secrets.ACR_REGISTRY }}/flask-app:${{ github.run_number }}
         manifests: k8s/python-app/deployment-sp.yaml
-        #imagepullsecrets: acr-secret # k8s secret
-        #wait: false
-        timeout: 30s
+        imagepullsecrets: acr-secret # k8s secret
+        wait: false
         
         
         
