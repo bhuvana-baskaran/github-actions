@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: mypythonapprepo1.azurecr.io/flask-app
+        image: myacr111.azurecr.io/flask-app
         ports:
         - containerPort: 5000
       imagePullSecrets:
