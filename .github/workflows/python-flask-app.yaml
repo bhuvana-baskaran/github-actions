@@ -53,7 +53,7 @@ jobs:
       with:
         images: mypythonapprepo1.azurecr.io/flask-app:${{ github.run_number }}
         manifests: k8s/python-app/deployment.yaml
-        imagepullsecrets: acr-secret # k8s secret
+        #imagepullsecrets: acr-secret # k8s secret
         #wait: false
         timeout: 30s
         
