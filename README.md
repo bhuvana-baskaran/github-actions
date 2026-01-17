@@ -3,7 +3,7 @@
 this file works only with below configuration
 - AKS cluster that has Local accounts with K8s RBAC enabled
 - Azure Kubernetes Service Cluster Admin Role assigned to AKS for SP (az aks get-credentials --admin)
-- Azure Kubernetes Service Cluster User Role to AKS for SP (az aks get-credentials --admin)
+- Azure Kubernetes Service Cluster User Role to AKS for SP (az aks get-credentials)
 - kubelogin is not required as the cluster doesn't have AAD authentication enabled
 
 For AKS to access ACR, either create imagePullSecret with
