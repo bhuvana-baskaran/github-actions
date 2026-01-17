@@ -52,7 +52,7 @@ jobs:
     - name: set aks context
       uses: azure/aks-set-context@v4
       with:
-        resource-group: myrg1
+        resource-group: kml_rg_main-9d9c7ed6c4204c2b
         cluster-name: myaks
         admin: 'false'
         use-kubelogin: 'true'
