@@ -5,6 +5,7 @@ on:
     workflows: 
       - "Python Flask App Build"
     types: completed
+    branches: [main]
 jobs:
   deploy_job:
     runs-on: ubuntu-latest
