@@ -3,8 +3,7 @@ pipeline {
     stages {
         stage("checkout") {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/bhuvana-baskaran/github-actions'
+                checkout scm
             }
         }
         stage("run python app") {
